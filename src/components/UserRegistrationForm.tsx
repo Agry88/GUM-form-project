@@ -26,13 +26,20 @@ const formSchema = z.object({
   dateOfBirth: z.string().min(1, 'Date of birth is required').refine((date) => new Date(date) <= new Date(), {
     message: 'Date of birth cannot be in the future',
   }),
-  email: z.string().email('Invalid email format'),
-  phoneNumber: z.string().optional(),
+  email: z.string().email('Invalid email format').optional(),
+  phoneNumber: z.string().optional().refine((phoneNumber) => phoneNumber?.startsWith('+852'), {
+    message: 'Phone number must start with +852',
+  }),
   password: z.string().min(6, 'Password must be at least 6 characters'),
   confirmPassword: z.string()
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"],
+}).refine((data) => {
+  return data.email || data.phoneNumber;
+}, {
+  message: "Either email or phone number must be provided",
+  path: ["email", "phoneNumber"]
 });
 
 type IFormData = z.infer<typeof formSchema>;
@@ -109,9 +116,8 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <Select {...field} label="Gender">
-                    <MenuItem value="male">Male</MenuItem>
-                    <MenuItem value="female">Female</MenuItem>
-                    <MenuItem value="other">Other</MenuItem>
+                    <MenuItem value="M">Male</MenuItem>
+                    <MenuItem value="F">Female</MenuItem>
                   </Select>
                 )}
               />
