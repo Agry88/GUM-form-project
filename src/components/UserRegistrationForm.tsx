@@ -8,7 +8,6 @@ import {
   Button,
   Typography,
   Container,
-  Grid,
   FormHelperText,
   Snackbar,
   Alert,
@@ -18,6 +17,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import GridFormBlockLayout from '../layouts/grid-form-block-layout';
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -71,13 +71,9 @@ export const UserRegistrationForm = () => {
         </Typography>
 
         <Divider sx={{ bgcolor: 'primary.main', borderBottomWidth: 2 }}/>
-        
-        <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-          Profile Information
-        </Typography>
-        
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+        <GridFormBlockLayout
+          title="Profile Information"
+          formInputElements={[
             <Controller
               name="firstName"
               control={control}
@@ -91,9 +87,7 @@ export const UserRegistrationForm = () => {
                   helperText={errors.firstName?.message}
                 />
               )}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+            />,
             <Controller
               name="lastName"
               control={control}
@@ -107,10 +101,7 @@ export const UserRegistrationForm = () => {
                   helperText={errors.lastName?.message}
                 />
               )}
-            />
-          </Grid>
-          
-          <Grid item xs={12} sm={6}>
+            />,
             <FormControl fullWidth error={!!errors.gender}>
               <InputLabel>Gender</InputLabel>
               <Controller
@@ -127,10 +118,7 @@ export const UserRegistrationForm = () => {
               {errors.gender && (
                 <FormHelperText>{errors.gender.message}</FormHelperText>
               )}
-            </FormControl>
-          </Grid>
-          
-          <Grid item xs={12} sm={6}>
+            </FormControl>,
             <Controller
               name="dateOfBirth"
               control={control}
@@ -153,18 +141,13 @@ export const UserRegistrationForm = () => {
                 />
               )}
             />
-          </Grid>
-        </Grid>
-
-        <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
-          Login Information
-        </Typography>
-        <FormHelperText sx={{ mb: 2 }}>
-          Choose one login method to input - either email address or phone number
-        </FormHelperText>
+          ]}
+        />
         
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+        <GridFormBlockLayout
+          title="Login Information"
+          helperText="Choose one login method to input - either email address or phone number"
+          formInputElements={[
             <Controller
               name="email"
               control={control}
@@ -179,9 +162,7 @@ export const UserRegistrationForm = () => {
                   helperText={errors.email?.message}
                 />
               )}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+            />,
             <Controller
               name="phoneNumber"
               control={control}
@@ -194,10 +175,7 @@ export const UserRegistrationForm = () => {
                   helperText={errors.phoneNumber?.message}
                 />
               )}
-            />
-          </Grid>
-          
-          <Grid item xs={12} sm={6}>
+            />,
             <Controller
               name="password"
               control={control}
@@ -212,9 +190,7 @@ export const UserRegistrationForm = () => {
                   helperText={errors.password?.message}
                 />
               )}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+            />,
             <Controller
               name="confirmPassword"
               control={control}
@@ -230,8 +206,8 @@ export const UserRegistrationForm = () => {
                 />
               )}
             />
-          </Grid>
-        </Grid>
+          ]}
+        />
 
         <Button
           type="submit"
