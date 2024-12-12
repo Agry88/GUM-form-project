@@ -4,11 +4,11 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Button,
   FormHelperText,
   Snackbar,
   Alert,
+  Typography,
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { useState } from 'react';
@@ -81,66 +81,74 @@ export const UserRegistrationForm = () => {
                 name="firstName"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    required
-                    fullWidth
-                    label="First Name"
-                    error={!!errors.firstName}
-                    helperText={errors.firstName?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">First Name*</Typography>
+                    <TextField
+                      {...field}
+                      required
+                      fullWidth
+                      error={!!errors.firstName}
+                      helperText={errors.firstName?.message}
+                      />
+                  </>
                 )}
               />,
               <Controller
                 name="lastName"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    required
-                    fullWidth
-                    label="Last Name"
-                    error={!!errors.lastName}
-                    helperText={errors.lastName?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Last Name*</Typography>
+                    <TextField
+                      {...field}
+                      required
+                      fullWidth
+                      error={!!errors.lastName}
+                      helperText={errors.lastName?.message}
+                    />
+                  </>
                 )}
               />,
-              <FormControl fullWidth error={!!errors.gender}>
-                <InputLabel>Gender</InputLabel>
-                <Controller
-                  name="gender"
-                  control={control}
-                  render={({ field }) => (
-                    <Select {...field} label="Gender">
-                      <MenuItem value="M">Male</MenuItem>
-                      <MenuItem value="F">Female</MenuItem>
-                    </Select>
+              <>
+                <Typography variant="subtitle1">Gender</Typography>
+                <FormControl fullWidth error={!!errors.gender}>
+                  <Controller
+                    name="gender"
+                    control={control}
+                    render={({ field }) => (
+                      <Select {...field}>
+                        <MenuItem value="M">Male</MenuItem>
+                        <MenuItem value="F">Female</MenuItem>
+                      </Select>
+                    )}
+                  />
+                  {errors.gender && (
+                    <FormHelperText>{errors.gender.message}</FormHelperText>
                   )}
-                />
-                {errors.gender && (
-                  <FormHelperText>{errors.gender.message}</FormHelperText>
-                )}
-              </FormControl>,
+                </FormControl>
+              </>,
               <Controller
                 name="dateOfBirth"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    fullWidth
-                    type="date"
-                    label="Date of Birth"
-                    slotProps={{
-                      inputLabel: {
-                        shrink: true
-                      },
-                      htmlInput: {
-                        max: new Date().toISOString().split('T')[0]
-                      }
-                    }}
-                    error={!!errors.dateOfBirth}
-                    helperText={errors.dateOfBirth?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Date of Birth</Typography>
+                    <TextField
+                      {...field}
+                      fullWidth
+                      type="date"
+                      slotProps={{
+                        inputLabel: {
+                          shrink: true
+                        },
+                        htmlInput: {
+                          max: new Date().toISOString().split('T')[0]
+                        }
+                      }}
+                      error={!!errors.dateOfBirth}
+                      helperText={errors.dateOfBirth?.message}
+                    />
+                  </>
                 )}
               />
             ]}
@@ -154,58 +162,66 @@ export const UserRegistrationForm = () => {
                 name="email"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    required
-                    fullWidth
-                    label="Email Address"
-                    type="email"
-                    error={!!errors.email}
-                    helperText={errors.email?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Email Address*</Typography>
+                    <TextField
+                      {...field}
+                      type='email'
+                      required
+                      fullWidth
+                      error={!!errors.email}
+                      helperText={errors.email?.message}
+                    />
+                  </>
                 )}
               />,
               <Controller
                 name="phoneNumber"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    fullWidth
-                    label="Phone Number"
-                    error={!!errors.phoneNumber}
-                    helperText={errors.phoneNumber?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Phone Number</Typography>
+                    <TextField
+                      {...field}
+                      fullWidth
+                      error={!!errors.phoneNumber}
+                      helperText={errors.phoneNumber?.message}
+                    />
+                  </>
                 )}
               />,
               <Controller
                 name="password"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    required
-                    fullWidth
-                    type="password"
-                    label="Password"
-                    error={!!errors.password}
-                    helperText={errors.password?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Password*</Typography>
+                    <TextField
+                      {...field}
+                      required
+                      fullWidth
+                      type="password"
+                      error={!!errors.password}
+                      helperText={errors.password?.message}
+                    />
+                  </>
                 )}
               />,
               <Controller
                 name="confirmPassword"
                 control={control}
                 render={({ field }) => (
-                  <TextField
-                    {...field}
-                    required
-                    fullWidth
-                    type="password"
-                    label="Confirm Password"
-                    error={!!errors.confirmPassword}
-                    helperText={errors.confirmPassword?.message}
-                  />
+                  <>
+                    <Typography variant="subtitle1">Confirm Password*</Typography>
+                    <TextField
+                      {...field}
+                      required
+                      fullWidth
+                      type="password"
+                      error={!!errors.confirmPassword}
+                      helperText={errors.confirmPassword?.message}
+                    />
+                  </>
                 )}
               />
             ]}
