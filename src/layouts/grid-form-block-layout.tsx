@@ -20,7 +20,10 @@ export default function GridFormBlockLayout({ title, helperText, formInputElemen
         </FormHelperText>
       )}
       
-      <Grid container spacing={2}>
+      <Grid container spacing={{
+        xs: 0,
+        sm: 2
+      }}>
         {formInputElements.map((InputElement, index) => (
           <Grid key={index} item xs={12} sm={6}>
             {InputElement}
