@@ -4,7 +4,13 @@ import './index.css'
 import App from './App.tsx'
 import { ThemeProvider, createTheme } from '@mui/material'
 
-const theme = createTheme()
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FFD000',
+    },
+  },
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
