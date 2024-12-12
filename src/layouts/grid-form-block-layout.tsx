@@ -11,11 +11,11 @@ type Props = {
 export default function GridFormBlockLayout({ title, helperText, formInputElements }: Props) {
   return (
     <Box>
-      <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+      <Typography variant="h6" gutterBottom sx={{ mt: 4, mb: helperText ? 0 : 4 }}>
         {title}
       </Typography>
       {helperText && (
-        <FormHelperText sx={{ mb: 2 }}>
+        <FormHelperText sx={{ mb: 4 }}>
           {helperText}
         </FormHelperText>
       )}
