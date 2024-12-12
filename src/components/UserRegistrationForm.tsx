@@ -82,13 +82,13 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">First Name*</Typography>
+                    <Typography variant="subtitle1" component="label">First Name*</Typography>
                     <TextField
                       {...field}
                       required
                       fullWidth
                       error={!!errors.firstName}
-                      helperText={errors.firstName?.message}
+                      helperText={errors.firstName?.message || ' '}
                       />
                   </>
                 )}
@@ -98,19 +98,19 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Last Name*</Typography>
+                    <Typography variant="subtitle1" component="label">Last Name*</Typography>
                     <TextField
                       {...field}
                       required
                       fullWidth
                       error={!!errors.lastName}
-                      helperText={errors.lastName?.message}
+                      helperText={errors.lastName?.message || ' '}
                     />
                   </>
                 )}
               />,
               <>
-                <Typography variant="subtitle1">Gender</Typography>
+                <Typography variant="subtitle1" component="label">Gender</Typography>
                 <FormControl fullWidth error={!!errors.gender}>
                   <Controller
                     name="gender"
@@ -132,7 +132,7 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Date of Birth</Typography>
+                    <Typography variant="subtitle1" component="label">Date of Birth</Typography>
                     <TextField
                       {...field}
                       fullWidth
@@ -146,7 +146,7 @@ export const UserRegistrationForm = () => {
                         }
                       }}
                       error={!!errors.dateOfBirth}
-                      helperText={errors.dateOfBirth?.message}
+                      helperText={errors.dateOfBirth?.message || ' '}
                     />
                   </>
                 )}
@@ -163,14 +163,14 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Email Address*</Typography>
+                    <Typography variant="subtitle1" component="label">Email Address*</Typography>
                     <TextField
                       {...field}
                       type='email'
                       required
                       fullWidth
                       error={!!errors.email}
-                      helperText={errors.email?.message}
+                      helperText={errors.email?.message || ' '}
                     />
                   </>
                 )}
@@ -180,12 +180,12 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Phone Number</Typography>
+                    <Typography variant="subtitle1" component="label">Phone Number</Typography>
                     <TextField
                       {...field}
                       fullWidth
                       error={!!errors.phoneNumber}
-                      helperText={errors.phoneNumber?.message}
+                      helperText={errors.phoneNumber?.message || ' '}
                     />
                   </>
                 )}
@@ -195,14 +195,14 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Password*</Typography>
+                    <Typography variant="subtitle1" component="label">Password*</Typography>
                     <TextField
                       {...field}
                       required
                       fullWidth
                       type="password"
                       error={!!errors.password}
-                      helperText={errors.password?.message}
+                      helperText={errors.password?.message || ' '}
                     />
                   </>
                 )}
@@ -212,14 +212,14 @@ export const UserRegistrationForm = () => {
                 control={control}
                 render={({ field }) => (
                   <>
-                    <Typography variant="subtitle1">Confirm Password*</Typography>
+                    <Typography variant="subtitle1" component="label">Confirm Password*</Typography>
                     <TextField
                       {...field}
                       required
                       fullWidth
                       type="password"
                       error={!!errors.confirmPassword}
-                      helperText={errors.confirmPassword?.message}
+                      helperText={errors.confirmPassword?.message || ' '}
                     />
                   </>
                 )}
